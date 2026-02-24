@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --sidebar-width: 260px;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseRed {
+
+  0%,
+  100% {
+    background-color: rgba(220, 38, 38, 0.95);
+  }
+
+  50% {
+    background-color: rgba(153, 27, 27, 0.95);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-blink {
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+.animate-pulse-red {
+  animation: pulseRed 1s ease-in-out infinite;
+}
+
+/* ─── Premium Components ───────────────────────────────────────────────── */
+@layer components {
+
+  /* Modern Enterprise Card */
+  .card {
+    @apply bg-white border border-slate-200/60 rounded-2xl shadow-[0_2px_4px_rgba(0, 0, 0, 0.02), 0_1px_10px_rgba(0, 0, 0, 0.01)];
+    @apply transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0, 0, 0, 0.04)] hover:border-slate-300/50;
+  }
+
+  /* Status Badges - Pill Style */
+  .badge-safe {
+    @apply text-emerald-700 bg-emerald-50/80 border border-emerald-200/50 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider;
+  }
+
+  .badge-alert {
+    @apply text-amber-700 bg-amber-50/80 border border-amber-200/50 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider;
+  }
+
+  .badge-critical {
+    @apply text-red-700 bg-red-50/80 border border-red-200/50 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider;
+  }
+
+  /* Sidebar Navigation */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-[13px] font-semibold text-slate-500 transition-all duration-200;
+    @apply hover:bg-slate-50 hover:text-slate-900;
+  }
+
+  .nav-link-active {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-[13px] font-bold text-blue-700 bg-blue-50/80 border border-blue-100/50 shadow-sm;
+  }
+
+  /* Stat value boxes in cards */
+  .vital-metric {
+    @apply flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50/50 border border-slate-100 transition-colors duration-200;
+  }
+
+  .vital-metric-warn {
+    @apply flex flex-col items-center justify-center p-4 rounded-2xl bg-red-50/80 border border-red-100 shadow-sm;
+  }
+}
+
+/* ─── Layout Utility ───────────────────────────────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
